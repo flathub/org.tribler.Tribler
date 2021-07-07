@@ -38,8 +38,8 @@ modules:
       - install -Dm644 org.tribler.Tribler.metainfo.xml -t /app/share/metainfo
     sources:
       - type: file
-        url: https://github.com/Tribler/tribler/releases/download/v7.9.0/tribler_7.9.0_all.deb
-        sha256: e0213f142cc9b406fc50705ebe527feec911aee7fb3fc57dd9d64ee25a45d66f
+        url: https://github.com/Tribler/tribler/releases/download/v7.10.0/tribler_7.10.0_all.deb
+        sha256: 6650db4ced189aab6632316188406e3ad9ed9fb6b2c7a4a793c3c0bd13dbbd90
         dest-filename: tribler.deb
         only-arches:
           - x86_64
