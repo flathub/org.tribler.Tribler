@@ -43,6 +43,11 @@ modules:
         dest-filename: tribler.deb
         only-arches:
           - x86_64
+        x-checker-data:
+          type: anitya
+          project-id: 241848
+          stable-only: true
+          url-template: https://github.com/Tribler/tribler/releases/download/v${version}/tribler_${version}_all.deb
       - type: dir
         path: icons
       - type: file
