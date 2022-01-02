@@ -29,17 +29,17 @@ modules:
       - tar xf data.tar.xz
       - mkdir -p /app/bin
       - install tribler /app/bin
-      - install -Dm644 usr/share/applications/tribler.desktop /app/share/applications/org.tribler.Tribler.desktop
+      - install -Dm644 usr/share/applications/${FLATPAK_ID}.desktop /app/share/applications/${FLATPAK_ID}.desktop
       - |
         for size in 64 128 256 512; do
-          install -Dm644 tribler_${size}.png /app/share/icons/hicolor/${size}x${size}/apps/org.tribler.Tribler.png || exit 1
+          install -Dm644 tribler_${size}.png /app/share/icons/hicolor/${size}x${size}/apps/${FLATPAK_ID}.png || exit 1
         done
       - mv usr/share/tribler /app/share
-      - install -Dm644 org.tribler.Tribler.metainfo.xml -t /app/share/metainfo
+      - install -Dm644 ${FLATPAK_ID}.metainfo.xml -t /app/share/metainfo
     sources:
       - type: file
-        url: https://github.com/Tribler/tribler/releases/download/v7.10.0/tribler_7.10.0_all.deb
-        sha256: 6650db4ced189aab6632316188406e3ad9ed9fb6b2c7a4a793c3c0bd13dbbd90
+        url: https://github.com/Tribler/tribler/releases/download/v7.11.0/tribler_7.11.0_all.deb
+        sha256: 5ddf62f9b799776cfe3601fa883e180a056cf60147a78de67dfa77ae62a0a14f
         dest-filename: tribler.deb
         only-arches:
           - x86_64
@@ -52,8 +52,8 @@ modules:
         commands: 
           - exec /app/share/tribler/tribler
     post-install:
-      - desktop-file-edit --set-key=Exec --set-value="/app/bin/tribler %U" /app/share/applications/org.tribler.Tribler.desktop
-      - desktop-file-edit --set-key=Icon --set-value=org.tribler.Tribler /app/share/applications/org.tribler.Tribler.desktop
+      - desktop-file-edit --set-key=Exec --set-value="/app/bin/tribler %U" /app/share/applications/${FLATPAK_ID}.desktop
+      - desktop-file-edit --set-key=Icon --set-value=${FLATPAK_ID} /app/share/applications/${FLATPAK_ID}.desktop
   - name: libsodium
     sources:
       - type: archive
