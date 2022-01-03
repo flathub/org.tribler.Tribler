@@ -9,7 +9,7 @@
 id: org.tribler.Tribler
 command: tribler
 runtime: org.kde.Platform
-runtime-version: '5.15'
+runtime-version: "5.15"
 sdk: org.kde.Sdk
 finish-args:
   - --share=ipc
@@ -25,35 +25,30 @@ modules:
   - name: tribler
     buildsystem: simple
     build-commands:
-      - ar x tribler.deb
-      - tar xf data.tar.xz
       - mkdir -p /app/bin
       - install tribler /app/bin
-      - install -Dm644 usr/share/applications/tribler.desktop /app/share/applications/org.tribler.Tribler.desktop
-      - |
-        for size in 64 128 256 512; do
-          install -Dm644 tribler_${size}.png /app/share/icons/hicolor/${size}x${size}/apps/org.tribler.Tribler.png || exit 1
-        done
-      - mv usr/share/tribler /app/share
-      - install -Dm644 org.tribler.Tribler.metainfo.xml -t /app/share/metainfo
+      - ar x tribler.deb
+      - tar xf data.tar.xz
+      - mv usr/share /app/share
+      # Needs to be here because the metainfo.xml from tribler.deb is not complete
+      - mv /app/share/metainfo/org.tribler.Tribler.metainfo.xml /app/share/metainfo/org.tribler.Tribler.metainfo.xml.tmp
+      - sed '1 i <?xml version="1.0" encoding="UTF-8"?>' /app/share/metainfo/org.tribler.Tribler.metainfo.xml.tmp > /app/share/metainfo/org.tribler.Tribler.metainfo.xml
     sources:
       - type: file
-        url: https://github.com/Tribler/tribler/releases/download/v7.10.0/tribler_7.10.0_all.deb
-        sha256: 6650db4ced189aab6632316188406e3ad9ed9fb6b2c7a4a793c3c0bd13dbbd90
+        url: https://github.com/Tribler/tribler/releases/download/v7.11.0/tribler_7.11.0_all.deb
+        sha256: 5ddf62f9b799776cfe3601fa883e180a056cf60147a78de67dfa77ae62a0a14f
         dest-filename: tribler.deb
         only-arches:
           - x86_64
-      - type: dir
-        path: icons
-      - type: file
-        path: org.tribler.Tribler.metainfo.xml
+        x-checker-data:
+          type: anitya
+          project-id: 241848
+          stable-only: true
+          url-template: https://github.com/Tribler/tribler/releases/download/v${version}/tribler_${version}_all.deb
       - type: script
         dest-filename: tribler
-        commands: 
+        commands:
           - exec /app/share/tribler/tribler
-    post-install:
-      - desktop-file-edit --set-key=Exec --set-value="/app/bin/tribler %U" /app/share/applications/org.tribler.Tribler.desktop
-      - desktop-file-edit --set-key=Icon --set-value=org.tribler.Tribler /app/share/applications/org.tribler.Tribler.desktop
   - name: libsodium
     sources:
       - type: archive
@@ -63,8 +58,8 @@ cleanup:
   - /include
   - /lib/pkgconfig
   - /share/gtk-doc
-  - '*.la'
-  - '*.deb'
-  - '*.xz'
-  - 'debian-binary'
+  - "*.la"
+  - "*.deb"
+  - "*.xz"
+  - "debian-binary"
   - /usr
