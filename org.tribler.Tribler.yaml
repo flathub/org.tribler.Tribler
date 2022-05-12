@@ -2,15 +2,15 @@
 #
 # To build the flatpak locally:
 #
-# flatpak install flathub runtime/org.kde.Sdk/x86_64/5.15
-#
+# flatpak install runtime/org.freedesktop.Sdk/x86_64/20.08
+# 
 # flatpak-builder --force-clean build org.tribler.Tribler.yaml --install --user
 
 id: org.tribler.Tribler
 command: tribler
-runtime: org.kde.Platform
-runtime-version: "5.15"
-sdk: org.kde.Sdk
+runtime: org.freedesktop.Platform
+runtime-version: "20.08"
+sdk: org.freedesktop.Sdk
 finish-args:
   - --share=ipc
   - --socket=x11
