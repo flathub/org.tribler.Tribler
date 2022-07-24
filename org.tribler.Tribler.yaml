@@ -30,13 +30,10 @@ modules:
       - ar x tribler.deb
       - tar xf data.tar.xz
       - mv usr/share /app/share
-      # Needs to be here because the metainfo.xml from tribler.deb is not complete
-      - mv /app/share/metainfo/org.tribler.Tribler.metainfo.xml /app/share/metainfo/org.tribler.Tribler.metainfo.xml.tmp
-      - sed '1 i <?xml version="1.0" encoding="UTF-8"?>' /app/share/metainfo/org.tribler.Tribler.metainfo.xml.tmp > /app/share/metainfo/org.tribler.Tribler.metainfo.xml
     sources:
       - type: file
-        url: https://github.com/Tribler/tribler/releases/download/v7.11.0/tribler_7.11.0_all.deb
-        sha256: 5ddf62f9b799776cfe3601fa883e180a056cf60147a78de67dfa77ae62a0a14f
+        url: https://github.com/Tribler/tribler/releases/download/v7.12.0/tribler_7.12.0_all.deb
+        sha256: c5675ecc453da4e50e065604b28b5fead108ad3eb91418910c2b2c0f8c18df76
         dest-filename: tribler.deb
         only-arches:
           - x86_64
