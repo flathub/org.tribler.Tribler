@@ -9,7 +9,7 @@
 id: org.tribler.Tribler
 command: tribler
 runtime: org.freedesktop.Platform
-runtime-version: "20.08"
+runtime-version: '20.08'
 sdk: org.freedesktop.Sdk
 finish-args:
   - --share=ipc
@@ -32,8 +32,8 @@ modules:
       - mv usr/share /app/share
     sources:
       - type: file
-        url: https://github.com/Tribler/tribler/releases/download/v7.12.0/tribler_7.12.0_all.deb
-        sha256: c5675ecc453da4e50e065604b28b5fead108ad3eb91418910c2b2c0f8c18df76
+        url: https://github.com/Tribler/tribler/releases/download/v7.12.1/tribler_7.12.1_all.deb
+        sha256: 70c45878815d9631628c32edeb0edc69fb884e71342f2f79304dcfd26ab9bc3e
         dest-filename: tribler.deb
         only-arches:
           - x86_64
@@ -55,8 +55,8 @@ cleanup:
   - /include
   - /lib/pkgconfig
   - /share/gtk-doc
-  - "*.la"
-  - "*.deb"
-  - "*.xz"
-  - "debian-binary"
+  - '*.la'
+  - '*.deb'
+  - '*.xz'
+  - debian-binary
   - /usr
