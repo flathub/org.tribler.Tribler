@@ -2,25 +2,25 @@
 #
 # To build the flatpak locally:
 #
-# flatpak install runtime/org.freedesktop.Sdk/x86_64/20.08
-# 
+# flatpak install runtime/org.freedesktop.Sdk/x86_64/22.08
+#
 # flatpak-builder --force-clean build org.tribler.Tribler.yaml --install --user
 
 id: org.tribler.Tribler
 command: tribler
 runtime: org.freedesktop.Platform
-runtime-version: '20.08'
+runtime-version: '22.08'
 sdk: org.freedesktop.Sdk
 finish-args:
-  - --share=ipc
-  - --socket=x11
-  - --device=dri
+  - --share=ipc                                         # Used for X11 shared memory extension
+  - --socket=x11                                        # Only x11 is supported for now                
+  - --device=dri                                        # Used for OpenGL
   - --socket=pulseaudio
   - --share=network
-  - --filesystem=xdg-download/TriblerDownloads:create
-  - --persist=.Tribler
-  - --own-name=org.kde.*
-  - --talk-name=org.freedesktop.Notifications
+  - --filesystem=xdg-download/TriblerDownloads:create   # Store downloads in the user's download folder
+  - --persist=.Tribler                                  # Store the application state
+  - --own-name=org.kde.*                                # Used for AppIndicator support
+  - --talk-name=org.freedesktop.Notifications           # Used for AppIndicator support
 modules:
   - name: tribler
     buildsystem: simple
