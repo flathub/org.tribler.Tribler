@@ -32,8 +32,8 @@ modules:
       - mv usr/share /app/share
     sources:
       - type: file
-        url: https://github.com/Tribler/tribler/releases/download/v7.12.1/tribler_7.12.1_all.deb
-        sha256: 70c45878815d9631628c32edeb0edc69fb884e71342f2f79304dcfd26ab9bc3e
+        url: https://github.com/Tribler/tribler/releases/download/v7.13.0/tribler_7.13.0_all.deb
+        sha256: ca88db42ad685eaa9b79b9eef79bb49fab070fe77457f8db99409ee3e9244109
         dest-filename: tribler.deb
         only-arches:
           - x86_64
