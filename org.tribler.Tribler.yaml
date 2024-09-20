@@ -33,7 +33,7 @@ modules:
     sources:
       - type: file
         url: https://github.com/Tribler/tribler/releases/download/v7.14.0/tribler_7.14.0_all.deb
-        sha256: 8000833f6ccf7952fec9e729296f82172f6105c738064f552832910aaf645527
+        sha256: 2c8d43acdae81fec82c53a5f62efaaccc12d984e14f7b5585ebe3fe31c98bc40
         dest-filename: tribler.deb
         only-arches:
           - x86_64
