@@ -2,7 +2,7 @@
 #
 # To build the flatpak locally:
 #
-# flatpak install runtime/org.freedesktop.Sdk/x86_64/22.08
+# flatpak install runtime/org.freedesktop.Sdk/x86_64/23.08
 #
 # flatpak-builder --force-clean build org.tribler.Tribler.yaml --install --user
 
