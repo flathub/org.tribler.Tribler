@@ -45,7 +45,7 @@ modules:
       - type: script
         dest-filename: tribler
         commands:
-          - exec /app/share/tribler/tribler
+          - exec /app/share/tribler/tribler "$@"
   - name: libsodium
     sources:
       - type: archive
