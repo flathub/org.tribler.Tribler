@@ -19,7 +19,7 @@ finish-args:
   - --share=network
   - --filesystem=xdg-download/TriblerDownloads:create   # Store downloads in the user's download folder
   - --persist=.Tribler                                  # Store the application state
-  - --own-name=org.kde.*                                # Used for AppIndicator support
+  - --talk-name=org.kde.StatusNotifierWatcher           # Used for AppIndicator support
   - --talk-name=org.freedesktop.Notifications           # Used for AppIndicator support
 modules:
   - name: tribler
