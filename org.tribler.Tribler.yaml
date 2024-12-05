@@ -13,6 +13,8 @@ runtime-version: '24.08'
 sdk: org.freedesktop.Sdk
 finish-args:
   - --socket=fallback-x11
+  - --socket=wayland
+  - --share=ipc
   - --share=network
   - --filesystem=xdg-download                           # Store downloads in the user's download folder
   - --persist=.Tribler                                  # Store the application state
