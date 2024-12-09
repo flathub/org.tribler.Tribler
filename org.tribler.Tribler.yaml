@@ -2,25 +2,23 @@
 #
 # To build the flatpak locally:
 #
-# flatpak install runtime/org.freedesktop.Sdk/x86_64/23.08
-#
+# flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+# flatpak install runtime/org.freedesktop.Sdk/x86_64/24.08
 # flatpak-builder --force-clean build org.tribler.Tribler.yaml --install --user
 
 id: org.tribler.Tribler
 command: tribler
 runtime: org.freedesktop.Platform
-runtime-version: '23.08'
+runtime-version: '24.08'
 sdk: org.freedesktop.Sdk
 finish-args:
-  - --share=ipc                                         # Used for X11 shared memory extension
-  - --socket=x11                                        # Only x11 is supported for now                
-  - --device=dri                                        # Used for OpenGL
-  - --socket=pulseaudio
+  - --socket=fallback-x11
+  - --socket=wayland
+  - --share=ipc
   - --share=network
-  - --filesystem=xdg-download/TriblerDownloads:create   # Store downloads in the user's download folder
+  - --filesystem=xdg-download                           # Store downloads in the user's download folder
   - --persist=.Tribler                                  # Store the application state
-  - --own-name=org.kde.*                                # Used for AppIndicator support
-  - --talk-name=org.freedesktop.Notifications           # Used for AppIndicator support
+  - --talk-name=org.kde.StatusNotifierWatcher           # Used for AppIndicator support
 modules:
   - name: tribler
     buildsystem: simple
@@ -32,8 +30,8 @@ modules:
       - mv usr/share /app/share
     sources:
       - type: file
-        url: https://github.com/Tribler/tribler/releases/download/v7.14.0/tribler_7.14.0_all.deb
-        sha256: 2c8d43acdae81fec82c53a5f62efaaccc12d984e14f7b5585ebe3fe31c98bc40
+        url: https://github.com/Tribler/tribler/releases/download/v8.0.5/tribler_8.0.5_x64.deb
+        sha256: d6d144cbce6c73eda22a660ed9a4c38184afdfaccfa6ef22fd53bc1d7316bc3f
         dest-filename: tribler.deb
         only-arches:
           - x86_64
@@ -41,7 +39,7 @@ modules:
           type: anitya
           project-id: 241848
           stable-only: true
-          url-template: https://github.com/Tribler/tribler/releases/download/v${version}/tribler_${version}_all.deb
+          url-template: https://github.com/Tribler/tribler/releases/download/v${version}/tribler_${version}_x64.deb
       - type: script
         dest-filename: tribler
         commands:
@@ -49,8 +47,9 @@ modules:
   - name: libsodium
     sources:
       - type: archive
-        url: https://github.com/jedisct1/libsodium/releases/download/1.0.18-RELEASE/libsodium-1.0.18.tar.gz
-        sha256: 6f504490b342a4f8a4c4a02fc9b866cbef8622d5df4e5452b46be121e46636c1
+        url: https://github.com/jedisct1/libsodium/releases/download/1.0.20-RELEASE/libsodium-1.0.20.tar.gz
+        sha256: ebb65ef6ca439333c2bb41a0c1990587288da07f6c7fd07cb3a18cc18d30ce19
+  - shared-modules/libayatana-appindicator/libayatana-appindicator-gtk3.json
 cleanup:
   - /include
   - /lib/pkgconfig
