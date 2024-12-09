@@ -30,8 +30,8 @@ modules:
       - mv usr/share /app/share
     sources:
       - type: file
-        url: https://github.com/Tribler/tribler/releases/download/v8.0.5/tribler_8.0.5_x64.deb
-        sha256: d6d144cbce6c73eda22a660ed9a4c38184afdfaccfa6ef22fd53bc1d7316bc3f
+        url: https://github.com/Tribler/tribler/releases/download/v8.0.6/tribler_8.0.6_x64.deb
+        sha256: d64da3443608fabbd60514e5012b6a0c92fcdbcf0f77375c0a236648a079ad01
         dest-filename: tribler.deb
         only-arches:
           - x86_64
