@@ -19,15 +19,18 @@ finish-args:
   - --filesystem=xdg-download                           # Store downloads in the user's download folder
   - --persist=.Tribler                                  # Store the application state
   - --talk-name=org.kde.StatusNotifierWatcher           # Used for AppIndicator support
+  - --env=SSL_CERT_DIR=/etc/ssl/certs
 modules:
+  - shared-modules/libappindicator/libappindicator-gtk3-introspection-12.10.json
   - name: tribler
     buildsystem: simple
     build-commands:
       - mkdir -p /app/bin
+      - mkdir -p /app/share
       - install tribler /app/bin
       - ar x tribler.deb
       - tar xf data.tar.xz
-      - mv usr/share /app/share
+      - cp -r usr/share/* /app/share/ && rm -R usr/share
     sources:
       - type: file
         url: https://github.com/Tribler/tribler/releases/download/v8.0.7/tribler_8.0.7_x64.deb
@@ -43,13 +46,13 @@ modules:
       - type: script
         dest-filename: tribler
         commands:
+          - export TMPDIR="${XDG_CACHE_HOME}"/tmp/
           - exec /app/share/tribler/tribler "$@"
   - name: libsodium
     sources:
       - type: archive
         url: https://github.com/jedisct1/libsodium/releases/download/1.0.20-RELEASE/libsodium-1.0.20.tar.gz
         sha256: ebb65ef6ca439333c2bb41a0c1990587288da07f6c7fd07cb3a18cc18d30ce19
-  - shared-modules/libayatana-appindicator/libayatana-appindicator-gtk3.json
 cleanup:
   - /include
   - /lib/pkgconfig
