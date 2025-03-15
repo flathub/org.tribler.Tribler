@@ -18,6 +18,7 @@ finish-args:
   - --share=network
   - --filesystem=xdg-download                           # Store downloads in the user's download folder
   - --persist=.Tribler                                  # Store the application state
+  - --filesystem=~/.Tribler:create                      # We need to write to the state directory
   - --talk-name=org.kde.StatusNotifierWatcher           # Used for AppIndicator support
   - --env=SSL_CERT_DIR=/etc/ssl/certs
 modules:
