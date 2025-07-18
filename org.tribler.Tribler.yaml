@@ -31,7 +31,10 @@ modules:
       - ar x tribler.deb
       - tar xf data.tar.*
       - cp -r usr/share/* /app/share/ && rm -R usr/share
+      - install -Dm755 -t /app/bin xdg-open
     sources:
+      - type: file
+        path: xdg-open
       - type: file
         url: https://github.com/Tribler/tribler/releases/download/v8.2.0/tribler_8.2.0_x64.deb
         sha256: 982639931582f012f98e4bfee458ef1280a02eb6757d5f66b86c841ec18ac663
