@@ -1,0 +1,28 @@
+#!/bin/bash
+
+
+if [ "$#" -eq 1 ] && [[ "$1" == "http://localhost"* ]] || [[ "$1" == "http://127.0.0.1"* ]]; then
+  rdir="$XDG_RUNTIME_DIR/app/$FLATPAK_ID/redir.html"
+  cat << EOF > "$rdir"
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="0; url=$1">
+    <title>Redirecting...</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Redirecting......</h1>
+        <p>If you are not automatically redirected, click here: <a href="$1">Go to Tribler</a></p>
+    </div>
+</body>
+</html>
+EOF
+
+  /usr/bin/xdg-open "$rdir"
+  
+else
+  /usr/bin/xdg-open $@
+fi
+
