@@ -33,8 +33,8 @@ modules:
       - cp -r usr/share/* /app/share/ && rm -R usr/share
     sources:
       - type: file
-        url: https://github.com/Tribler/tribler/releases/download/v8.2.2/tribler_8.2.2_x64.deb
-        sha256: 4bd4e3f5f9b34d2ece735625e43a0c525c8c971a10d0161d112044156486df18
+        url: https://github.com/Tribler/tribler/releases/download/v8.2.3/tribler_8.2.3_x64.deb
+        sha256: c9ae9436d49425138fd83d02ece4e642b7df6d8d42b5f16367de8a0e37fa147f
         dest-filename: tribler.deb
         only-arches:
           - x86_64
@@ -44,8 +44,8 @@ modules:
           stable-only: true
           url-template: https://github.com/Tribler/tribler/releases/download/v${version}/tribler_${version}_x64.deb
       - type: file
-        url: https://github.com/Tribler/tribler/releases/download/v8.2.2/tribler_8.2.2_aarch64.deb
-        sha256: 403a7bd8cea6274853d59d05eaa4d83d47031dd4ea861aa29b191ef7a401c9f3
+        url: https://github.com/Tribler/tribler/releases/download/v8.2.3/tribler_8.2.3_aarch64.deb
+        sha256: be6925616e676d1ad010931a724d90915619b6d377a15ea476af0f79e26494ac
         dest-filename: tribler.deb
         only-arches:
           - aarch64
