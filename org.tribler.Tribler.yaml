@@ -3,13 +3,13 @@
 # To build the flatpak locally:
 #
 # flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-# flatpak install runtime/org.freedesktop.Sdk/x86_64/24.08
+# flatpak install runtime/org.freedesktop.Sdk/x86_64/25.08
 # flatpak-builder --force-clean build org.tribler.Tribler.yaml --install --user
 
 id: org.tribler.Tribler
 command: tribler
 runtime: org.freedesktop.Platform
-runtime-version: '24.08'
+runtime-version: '25.08'
 sdk: org.freedesktop.Sdk
 finish-args:
   - --socket=fallback-x11
