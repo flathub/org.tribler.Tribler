@@ -21,6 +21,12 @@ finish-args:
   - --talk-name=org.kde.StatusNotifierWatcher           # Used for AppIndicator support
   - --env=SSL_CERT_DIR=/etc/ssl/certs
 modules:
+  - name: gtkdocize #fake
+    buildsystem: simple
+    build-commands:
+      - touch gtkdocize
+      - install -Dm755 gtkdocize -t /app/bin/
+    cleanup: '*'
   - shared-modules/libappindicator/libappindicator-gtk3-introspection-12.10.json
   - name: tribler
     buildsystem: simple
