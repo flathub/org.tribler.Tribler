@@ -26,7 +26,8 @@ modules:
     build-commands:
       - touch gtkdocize
       - install -Dm755 gtkdocize -t /app/bin/
-    cleanup: '*'
+    cleanup: 
+      - '*'
   - shared-modules/libappindicator/libappindicator-gtk3-introspection-12.10.json
   - name: tribler
     buildsystem: simple
