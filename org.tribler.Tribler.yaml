@@ -9,7 +9,7 @@
 id: org.tribler.Tribler
 command: tribler
 runtime: org.freedesktop.Platform
-runtime-version: '24.08'
+runtime-version: '25.08'
 sdk: org.freedesktop.Sdk
 finish-args:
   - --socket=fallback-x11
